@@ -42,7 +42,7 @@ function showPreview() {
     `;
 }
 
-// ---------------- GENERATE REPORT ----------------
+// ---------------- BUTTON CLICK ----------------
 analyzeBtn.addEventListener("click", function () {
 
     if (!imageFile) {
@@ -50,46 +50,44 @@ analyzeBtn.addEventListener("click", function () {
         return;
     }
 
-    result.innerHTML = "<p>Generating report...</p>";
+    result.innerHTML = "<p>Generating PDF report...</p>";
 
-    setTimeout(generatePDF, 1000);
+    setTimeout(generatePDF, 800);
 });
 
-// ---------------- PDF GENERATION ----------------
+// ---------------- REAL PDF GENERATION ----------------
 function generatePDF() {
 
-    const content = `
-ADVANCED COLOUR ANALYSIS REPORT
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
 
-Undertone: Neutral Warm
-Season: Soft Autumn
+    doc.setFont("helvetica");
+    doc.setFontSize(16);
+    doc.text("ADVANCED PERSONAL COLOUR ANALYSIS", 10, 20);
 
-Recommended Palette:
-- Olive
-- Camel
-- Dusty Rose
-- Soft Teal
-- Cocoa
+    doc.setFontSize(12);
 
-Makeup:
-- Warm nude lips
-- Soft bronze eyes
+    doc.text("Undertone: Neutral Warm", 10, 40);
+    doc.text("Season: Soft Autumn", 10, 50);
 
-Hair:
-- Warm brown shades
+    doc.text("Recommended Palette:", 10, 70);
+    doc.text("- Olive, Camel, Dusty Rose", 10, 80);
+    doc.text("- Soft Teal, Cocoa", 10, 90);
 
-Accessories:
-- Gold & rose gold jewelry
-`;
+    doc.text("Makeup Suggestions:", 10, 110);
+    doc.text("- Warm nude lips", 10, 120);
+    doc.text("- Soft bronze eyes", 10, 130);
 
-    const blob = new Blob([content], { type: "application/pdf" });
+    doc.text("Hair Colours:", 10, 150);
+    doc.text("- Warm brown tones", 10, 160);
 
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "Colour_Analysis_Report.pdf";
-    link.click();
+    doc.text("Accessories:", 10, 180);
+    doc.text("- Gold & rose gold jewellery", 10, 190);
 
-    result.innerHTML = "<p>✔ Report downloaded successfully</p>";
+    // ✅ REAL PDF FILE DOWNLOAD
+    doc.save("Colour_Analysis_Report.pdf");
+
+    result.innerHTML = "<p>✔ PDF downloaded successfully</p>";
 }
 
 });
