@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Advanced Personal Colour Analysis</title>
+
     <link rel="stylesheet" href="style.css">
+
+    <!-- ✅ REQUIRED: PDF LIBRARY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 
 <body>
@@ -13,7 +17,7 @@
 
     <img src="logo.png" class="logo">
 
-    <h1>Advanced Personal Colour Analysis (Free Preview)</h1>
+    <h1>Advanced Personal Colour Analysis</h1>
 
     <!-- Upload -->
     <div class="section">
@@ -28,7 +32,8 @@
         <p><b>Click below to generate full report 👇</b></p>
     </div>
 
-    <button id="analyzeBtn" disabled>Generate Full Report</button>
+    <!-- Button -->
+    <button id="analyzeBtn" disabled>Generate Full Report (PDF)</button>
 
     <div id="result"></div>
 
