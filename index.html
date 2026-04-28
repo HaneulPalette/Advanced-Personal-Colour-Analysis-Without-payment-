@@ -6,9 +6,6 @@
     <title>Advanced Personal Colour Analysis</title>
 
     <link rel="stylesheet" href="style.css">
-
-    <!-- ✅ REQUIRED: PDF LIBRARY -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 
 <body>
@@ -19,26 +16,26 @@
 
     <h1>Advanced Personal Colour Analysis</h1>
 
-    <!-- Upload -->
     <div class="section">
         <label>Select Your Photo</label>
         <input type="file" id="imageUpload" accept="image/*">
     </div>
 
-    <!-- Preview -->
     <div class="section hidden" id="previewSection">
         <h2>✨ Preview Result</h2>
         <div id="previewOutput"></div>
-        <p><b>Click below to generate full report 👇</b></p>
     </div>
 
-    <!-- Button -->
     <button id="analyzeBtn" disabled>Generate Full Report (PDF)</button>
 
     <div id="result"></div>
 
 </div>
 
+<!-- ✅ LOAD jsPDF FIRST -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- ✅ THEN YOUR SCRIPT -->
 <script src="script.js"></script>
 
 </body>
